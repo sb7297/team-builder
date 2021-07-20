@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import TeamMembersList from './components/TeamMembersList';
 
 function App() {
   const [teamMembers, setTeamMembers] = useState([
@@ -10,13 +11,7 @@ function App() {
 
   return (
     <div className="App">
-    {teamMembers.map(member => {
-      return (<ul>
-        <li>{member.name}</li>
-        <li>{member.email}</li>
-        <li>{member.role}</li>
-      </ul>);
-    })}
+      <TeamMembersList teamMembers={teamMembers} />
     </div>
   );
 }
