@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import Form from './components/Form';
 import TeamMembersList from './components/TeamMembersList';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <TeamMembersList teamMembers={teamMembers} />
+      <Form />
     </div>
   );
 }
