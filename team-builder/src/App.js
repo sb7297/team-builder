@@ -15,16 +15,26 @@ function App() {
     teamMembers.reduce( (acc, current) => acc <= current.id ? current.id+1 : acc, 0 )
   );
 
+  // type: null | teamMember.id
+  const [editingId, setEditingId] = useState(null);
+
   const addMember = function(memberNoId) {
     let newMember = { ...memberNoId, id: nextId};
     setNextId(nextId+1);
     setTeamMembers([ ...teamMembers, newMember ]);
   };
 
+  const editMember = function(id, newMember) {
+    setTeamMembers( teamMembers.map(member => member.id === id ? {...newMember} : member) );
+    setEditingId(null);
+  }
+
   return (
     <div className="App">
-      <TeamMembersList teamMembers={teamMembers} />
-      <Form addMember={addMember} />
+      <TeamMembersList teamMembers={teamMembers} setEditingId={setEditingId} />
+      <Form addMember={addMember}
+        editingMember={teamMembers.find(member => member.id === editingId)}
+        editMyMember={(mem) => editMember(editingId, mem)} />
     </div>
   );
 }

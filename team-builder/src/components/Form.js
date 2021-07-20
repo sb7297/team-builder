@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Form = function({ addMember }) {
+const Form = function({ addMember, editingMember, editMyMember }) {
   const [ formMember, setFormMember ] = useState(
     {name: "", email: "", role: ""}
   );
@@ -11,11 +11,22 @@ const Form = function({ addMember }) {
 
   const handleSubmit = function(ev) {
     ev.preventDefault();
-    addMember({ ...formMember });
+    if (!editingMember) {
+      addMember({ ...formMember });
+    }
+    else {
+      editMyMember({ ...formMember });
+    }
     setFormMember({name: "", email: "", role: ""});
   }
 
+  useEffect(() => {
+    if (editingMember) setFormMember({ ...editingMember });
+  }, [editingMember]);
+
   return (
+    <div class="Form">
+    <h2>{editingMember ? `editing ${editingMember.name}` : 'add new member'}</h2>
     <form
       onSubmit={ev => handleSubmit(ev)}
     >
@@ -48,6 +59,7 @@ const Form = function({ addMember }) {
       </label>
       <button>Submit</button>
     </form>
+    </div>
   );
 }
 
