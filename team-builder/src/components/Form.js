@@ -14,6 +14,7 @@ const Form = function({ addMember }) {
           // value={}
           // onChange={}
         />
+      </label>
       <label>
         Email:
         <input
@@ -22,7 +23,6 @@ const Form = function({ addMember }) {
           // value={}
           // onChange={}
         />
-      </label>
       </label>
       <label>
         Role:
