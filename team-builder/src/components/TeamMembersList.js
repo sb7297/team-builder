@@ -4,7 +4,7 @@ const TeamMembersList = function({ teamMembers }) {
   return (
     teamMembers.map(member => {
       return (
-        <ul>
+        <ul key={member.id}>
           <li>{member.name}</li>
           <li>{member.email}</li>
           <li>{member.role}</li>
