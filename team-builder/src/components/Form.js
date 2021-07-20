@@ -26,7 +26,7 @@ const Form = function({ addMember, editingMember, editMyMember }) {
   }, [editingMember]);
 
   return (
-    <div class="Form">
+    <div className="Form">
     <h2>{editingMember ? `editing ${editingMember.name}` : 'add new member'}</h2>
     <form
       onSubmit={ev => handleSubmit(ev)}
