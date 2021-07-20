@@ -1,8 +1,12 @@
 import React from 'react';
 
-const TeamMembersList = function({ teamMembers, setEditingId }) {
+const TeamMembersList = function({ teamMembers, setEditingId, deleteMember }) {
   const handleEdit = function(id) {
     setEditingId(id);
+  }
+
+  const handleDelete = function(id) {
+    deleteMember(id);
   }
 
   return (
@@ -13,6 +17,7 @@ const TeamMembersList = function({ teamMembers, setEditingId }) {
           <li>{member.email}</li>
           <li>{member.role}</li>
           <li><button onClick={() => handleEdit(member.id)}>Edit</button></li>
+          <li><button onClick={() => handleDelete(member.id)}>Delete</button></li>
         </ul>
       );
     })

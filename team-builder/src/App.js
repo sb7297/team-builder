@@ -29,9 +29,14 @@ function App() {
     setEditingId(null);
   }
 
+  const deleteMember = function(id) {
+    if (editingId === id) setEditingId(null);
+    setTeamMembers( teamMembers.filter(member => member.id !== id ) );
+  }
+
   return (
     <div className="App">
-      <TeamMembersList teamMembers={teamMembers} setEditingId={setEditingId} />
+      <TeamMembersList teamMembers={teamMembers} setEditingId={setEditingId} deleteMember={deleteMember} />
       <Form addMember={addMember}
         editingMember={teamMembers.find(member => member.id === editingId)}
         editMyMember={(mem) => editMember(editingId, mem)} />

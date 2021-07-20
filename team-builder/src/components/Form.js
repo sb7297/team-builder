@@ -22,6 +22,7 @@ const Form = function({ addMember, editingMember, editMyMember }) {
 
   useEffect(() => {
     if (editingMember) setFormMember({ ...editingMember });
+    else setFormMember({name : "", email: "", role: ""});
   }, [editingMember]);
 
   return (
